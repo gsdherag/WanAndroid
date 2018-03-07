@@ -2,10 +2,13 @@ package com.shouxiu.wanandroid.network;
 
 
 import com.shouxiu.wanandroid.network.bean.BannerBean;
+import com.shouxiu.wanandroid.network.bean.HomeArticleBean;
 import com.shouxiu.wanandroid.network.bean.LzyListResponse;
+import com.shouxiu.wanandroid.network.bean.LzyResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * @author yeping
@@ -16,6 +19,7 @@ import retrofit2.http.GET;
 public interface HomeService {
     @GET("/banner/json")
     Observable<LzyListResponse<BannerBean>> getBanner();
-//    @POST("/user/register")
-//    Observable<LzyResponse<LoginBean>> sendRegister(@Query("username") String username, @Query("password") String password, @Query("repassword") String repassword);
+
+    @GET("/article/list/{page}/json")
+    Observable<LzyResponse<HomeArticleBean>> getArticle(@Path("page") int page);
 }

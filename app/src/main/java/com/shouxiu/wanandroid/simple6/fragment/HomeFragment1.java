@@ -1,6 +1,5 @@
 package com.shouxiu.wanandroid.simple6.fragment;
 
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.shouxiu.wanandroid.simple6.base.BaseView;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.Unbinder;
 
 /**
  * @author yeping
@@ -32,7 +30,6 @@ public class HomeFragment1 extends BaseFragment<BaseView, BasePresenter<BaseView
     ViewPager homeViewPager;
     @BindView(R.id.rl_titleCenter)
     RelativeLayout rlTitleCenter;
-    Unbinder unbinder;
     private ArrayList<Fragment> list_fragment;
     private String titleArray[] = {"关注", "热门"};
     private int imageArray[] = {R.mipmap.shang, R.mipmap.xia};
@@ -44,13 +41,12 @@ public class HomeFragment1 extends BaseFragment<BaseView, BasePresenter<BaseView
 
     @Override
     protected void initView(View view) {
-        AttentionFragment projLoFragment = new AttentionFragment();
-        HotspotFragment runningCheckFragment = new HotspotFragment();
+        Home1OneFragment home1OneFragment = new Home1OneFragment();
+        Home1TwoFragment home1TwoFragment = new Home1TwoFragment();
         list_fragment = new ArrayList<>();
-        list_fragment.add(projLoFragment);
-        list_fragment.add(runningCheckFragment);
+        list_fragment.add(home1OneFragment);
+        list_fragment.add(home1TwoFragment);
 
-        homeTabLayout.setTabMode(TabLayout.MODE_FIXED);
         homeTabLayout.addTab(homeTabLayout.newTab().setText(titleArray[0]));
         homeTabLayout.addTab(homeTabLayout.newTab().setText(titleArray[1]));
 

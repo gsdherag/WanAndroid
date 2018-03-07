@@ -19,7 +19,7 @@ public class LzyListResponse<T> {
 
     private int errorCode;
     private String errorMsg;
-    private List<BannerBean> data;
+    private List<T> data;
 
     public int getErrorCode() {
         return errorCode;
@@ -37,11 +37,11 @@ public class LzyListResponse<T> {
         this.errorMsg = errorMsg;
     }
 
-    public List<BannerBean> getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(List<BannerBean> data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 

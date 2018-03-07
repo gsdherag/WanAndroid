@@ -14,7 +14,7 @@ import com.shouxiu.wanandroid.simple6.base.BaseView;
  * @描述 ${TODO}
  */
 
-public class HotspotFragment extends BaseFragment<BaseView,BasePresenter<BaseView>> implements BaseView{
+public class Home1TwoFragment extends BaseFragment<BaseView,BasePresenter<BaseView>> implements BaseView{
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_hotspot;
