@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ShouxiuFrame</string>
+
+    <!--tab-->
+    <string name="home_page">首页</string>
+    <string name="card_bag">卡包</string>
+    <string name="government_service">服务</string>
+    <string name="mine">我的</string>
+
+    <string name="actionbar_search">搜索</string>
+    <string name="actionbar_more">更多信息</string>
+    <string name="actionbar_webview_share">分享到</string>
+    <string name="actionbar_webview_cope">复制链接</string>
+    <string name="actionbar_webview_open">打开链接</string>
+
+    <string name="action_share">分享</string>
+    <string name="search_title">Search</string>
+    <string name="login">登录</string>
+    <string name="login_user_name">用户名</string>
+    <string name="login_name">手机号</string>
+    <string name="plz_input_username">请输入用户名</string>
+    <string name="plz_input_phone_number">请输入手机号</string>
+    <string name="plz_input_verify_code">请输入手机验证码</string>
+    <string name="plz_input_pass_word">请输入登录密码</string>
+    <string name="login_pass_word">登录密码</string>
+
+    <string name="the_username_or_password_can_not_be_empty">用户名或密码不能为空</string>
+
+    <string name="quick_regist_by_mobile">手机快速注册</string>
+    <string name="btn_register">立即注册</string>
+    <string name="text_register">注册</string>
+    <string name="text_forget_password">忘记密码</string>
+    <string name="welcome_use">欢迎使用</string>
+    <string name="exit_login">退出登录</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffce3d3a</color>
+    <color name="colorPrimaryDark">#ffce3d3a</color>
+    <color name="colorAccent">#ffce3d3a</color>
+
+    <color name="blue_app">#ffce3d3a</color>
+    <color name="blue_app_unselected">#ffce663a</color>
+    <color name="blue_btn_pressed">#ff96bfd2</color>
+    <color name="blue_btn_unpressed">#ffaedef4</color>
+    <color name="guide_btn">#ffffff</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_4c5858">#4C5858</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- 页面背景色 -->
+    <color name="page_background">#F1F3F4</color>
+    <!--水波纹或5.0以下选择器颜色-->
+    <color name="tabBackground">#777D7D7D</color>
+    <!--item的5.0一下版本选择器颜色-->
+    <color name="itemLowBackground">#d9d9d9</color>
+    <!--正文文字颜色-->
+    <color name="colorContent">#ff333333</color>
+    <!--侧边栏分割线-->
+    <color name="colorNavLine">#E0E0E0</color>
+
+    <color name="blue_app_55">#553A9AFF</color>
+    <color name="textColor">#696969</color>
+    <color name="bg_gray">#f4f3f2</color>
+    <color name="gray_3c">#3C3C3C</color>
+    <color name="gray_96">#969696</color>
+    <color name="blue_btn_unenable">#C4E1FF</color>
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.shouxiu.wanandroid.view.widgets.APHeaderView
+        android:id="@+id/alipay_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.shouxiu.wanandroid.view.widgets.APSnapView
+            android:id="@id/alipay_snap"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:background="#2484CF">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我试试1"
+                />
+
+        </com.shouxiu.wanandroid.view.widgets.APSnapView>
+
+        <LinearLayout
+            android:id="@+id/alipay_grid_menu"
+            android:layout_width="match_parent"
+            android:layout_height="211dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我试试2"
+                />
+
+        </LinearLayout>
+
+        <com.shouxiu.wanandroid.view.widgets.APBarView
+            android:id="@id/alipay_bar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#2484CF"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我试试3"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我试试4"
+                />
+        </com.shouxiu.wanandroid.view.widgets.APBarView>
+    </com.shouxiu.wanandroid.view.widgets.APHeaderView>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/alipay_srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.shouxiu.wanandroid.view.widgets.APScrollingBehavior"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/alipay_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</android.support.design.widget.CoordinatorLayout>
