@@ -2,10 +2,13 @@ package com.shouxiu.wanandroid.simple6.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.shouxiu.wanandroid.R;
@@ -21,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * @创建者 yeping
@@ -34,13 +40,16 @@ public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticleP
     RecyclerView rvHomeNewArticle;
     @BindView(R.id.spl_home_new_article)
     SwipeRefreshLayout splHomeNewArticle;
+    @BindView(R.id.fab_top)
+    FloatingActionButton fabTop;
+    Unbinder unbinder;
     private List<ArticleBean> searchList = new ArrayList<>();
     private ArticleAdapter mArticleAdapter;
     private int page = 0;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_attention;
+        return R.layout.fragment_1one;
     }
 
     @Override
@@ -114,5 +123,24 @@ public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticleP
     public void loadArticleFail(String message) {
         mArticleAdapter.loadMoreFail();
         Toast.makeText(getContext(), "网络连接异常", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick(R.id.fab_top)
+    public void onViewClicked() {
+        rvHomeNewArticle.smoothScrollToPosition(0);
     }
 }
