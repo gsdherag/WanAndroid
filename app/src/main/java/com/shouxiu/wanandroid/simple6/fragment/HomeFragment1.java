@@ -50,7 +50,7 @@ public class HomeFragment1 extends BaseFragment<BaseView, BasePresenter<BaseView
     ViewPager homeViewPager;
     Unbinder unbinder;
     private ArrayList<Fragment> list_fragment;
-    private String titleArray[] = {"关注", "热门"};
+    private String titleArray[] = {"最新文章", "常用网站"};
     private int imageArray[] = {R.mipmap.shang, R.mipmap.xia};
     private List<BannerBean> bannerList = new ArrayList<>();
     private List<String> images = new ArrayList<>();

@@ -42,11 +42,10 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * @创建者 yeping
- * @创建时间 2017/11/22 14:55
- * @描述 ${加载首页文章}
+ * @author yeping
+ * @date 2017/11/22 14:55
+ * 加载首页文章
  */
-
 public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticlePresenter>
         implements HomeArticleView, BaseQuickAdapter.RequestLoadMoreListener,
         SwipeRefreshLayout.OnRefreshListener, ArticleAdapter.OnItemClickListener {
@@ -158,7 +157,6 @@ public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticleP
     @Override
     public void onItemClick(View view, int position) {
         WebViewActivity.loadUrl(getContext(), searchList.get(position).getLink(), Html.fromHtml(searchList.get(position).getTitle()).toString());
-
     }
 
     @Override
