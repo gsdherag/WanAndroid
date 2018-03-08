@@ -10,12 +10,12 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.shouxiu.wanandroid.bean.TabBean;
 import com.shouxiu.wanandroid.simple6.adapter.MainFragmentAdapter;
 import com.shouxiu.wanandroid.simple6.base.BaseActivity;
+import com.shouxiu.wanandroid.simple6.base.BasePresenter;
+import com.shouxiu.wanandroid.simple6.base.BaseView;
 import com.shouxiu.wanandroid.simple6.fragment.CardBagFragment;
 import com.shouxiu.wanandroid.simple6.fragment.HomePageFragment;
 import com.shouxiu.wanandroid.simple6.fragment.MineFragment;
 import com.shouxiu.wanandroid.simple6.fragment.ServiceFragment;
-import com.shouxiu.wanandroid.simple6.presenter.LoginPresenter;
-import com.shouxiu.wanandroid.simple6.view.LoginView;
 import com.shouxiu.wanandroid.view.CustomViewPager;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity<LoginView, LoginPresenter> implements LoginView {
+public class MainActivity extends BaseActivity<BaseView, BasePresenter<BaseView>> implements BaseView {
 
     public static final int FRAGMENT_VIP_CARD = 0;
     public static final int FRAGMENT_SERVICE = 1;
@@ -117,18 +117,12 @@ public class MainActivity extends BaseActivity<LoginView, LoginPresenter> implem
     }
 
     @Override
-    protected LoginView createView() {
+    protected BaseView createView() {
         return this;
     }
 
     @Override
-    protected LoginPresenter createPresenter() {
-        return new LoginPresenter();
+    protected BasePresenter<BaseView> createPresenter() {
+        return new BasePresenter();
     }
-
-    @Override
-    public void onLoginResult(String result) {
-        System.out.println(result);
-    }
-
 }

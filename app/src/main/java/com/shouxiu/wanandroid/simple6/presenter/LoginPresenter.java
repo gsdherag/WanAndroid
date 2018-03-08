@@ -1,29 +1,38 @@
 package com.shouxiu.wanandroid.simple6.presenter;
 
 
+import com.shouxiu.wanandroid.network.bean.LoginBean;
+import com.shouxiu.wanandroid.network.bean.LzyResponse;
 import com.shouxiu.wanandroid.simple6.base.BasePresenter;
-import com.shouxiu.wanandroid.simple6.model.LoginModel_6;
+import com.shouxiu.wanandroid.simple6.model.LoginModel;
 import com.shouxiu.wanandroid.simple6.view.LoginView;
 
+import io.reactivex.functions.Consumer;
+
 /**
- * @创建者 yeping
- * @创建时间 2017/9/5 10:02
- * @描述 ${TODO}
+ * @author yeping
+ * @date 2018/2/28 20:30
+ * @description ${TODO}
  */
 
 public class LoginPresenter extends BasePresenter<LoginView> {
-    private LoginModel_6 loginModel;
+    private LoginModel mModel;
 
     public LoginPresenter() {
-        this.loginModel = new LoginModel_6();
+        mModel = new LoginModel();
     }
 
-    public void login(String name) {
-//        loginModel.login(name, new StringCallback() {
-//            @Override
-//            public void onSuccess(Response<String> response) {
-//                getView().onLoginResult(response.body());
-//            }
-//        });
+    public void login(String username, String password) {
+        mModel.login(username, password, new Consumer<LzyResponse<LoginBean>>() {
+            @Override
+            public void accept(LzyResponse<LoginBean> loginBeanLzyResponse) throws Exception {
+                getView().loginSuccess(loginBeanLzyResponse.getData());
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                getView().loginFail(throwable.getMessage());
+            }
+        });
     }
 }

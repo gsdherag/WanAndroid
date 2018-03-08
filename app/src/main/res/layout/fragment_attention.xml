@@ -6,24 +6,11 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:gravity="center"
-        app:indicator_drawable_selected="@drawable/selected_radius"
-        app:indicator_drawable_unselected="@drawable/unselected_radius"
-        app:indicator_height="6dp"
-        app:indicator_margin="3dp"
-        app:indicator_width="6dp"
-        app:title_height="30dp"
-        app:title_textsize="12sp"/>
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/spl_home_new_article"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/banner">
+        android:layout_below="@+id/id_stickynavlayout_topview">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_home_new_article"

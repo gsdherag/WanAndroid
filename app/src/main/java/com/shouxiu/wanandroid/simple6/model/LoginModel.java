@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
  * @description ${TODO}
  */
 
-public class HomePageModel {
+public class LoginModel {
     public void login(String username, String password, Consumer<LzyResponse<LoginBean>> consumer1, Consumer<Throwable> consumer2) {
         ApiService.createHotTopicService().sendLogin(username, password)
                 .subscribeOn(Schedulers.io())

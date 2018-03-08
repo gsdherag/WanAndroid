@@ -15,8 +15,8 @@ import com.shouxiu.wanandroid.network.ApiService;
 import com.shouxiu.wanandroid.network.bean.LoginBean;
 import com.shouxiu.wanandroid.network.bean.LzyResponse;
 import com.shouxiu.wanandroid.simple6.base.BaseActivity;
-import com.shouxiu.wanandroid.simple6.presenter.HomePagePresenter;
-import com.shouxiu.wanandroid.simple6.view.HomePageView;
+import com.shouxiu.wanandroid.simple6.presenter.LoginPresenter;
+import com.shouxiu.wanandroid.simple6.view.LoginView;
 import com.shouxiu.wanandroid.utils.RxBus;
 import com.shouxiu.wanandroid.utils.SpUtils;
 import com.shouxiu.wanandroid.utils.ToastUtil;
@@ -36,7 +36,7 @@ import io.reactivex.schedulers.Schedulers;
  * @description ${TODO}
  */
 @Route(path = "/test/login")
-public class LoginActivity extends BaseActivity<HomePageView, HomePagePresenter> implements HomePageView, BaseActivity.TitleBarLauncher {
+public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> implements LoginView, BaseActivity.TitleBarLauncher {
 
     @BindView(R.id.edt_userName)
     ClearEditText edtUserName;
@@ -62,13 +62,13 @@ public class LoginActivity extends BaseActivity<HomePageView, HomePagePresenter>
     }
 
     @Override
-    protected HomePageView createView() {
+    protected LoginView createView() {
         return this;
     }
 
     @Override
-    protected HomePagePresenter createPresenter() {
-        return new HomePagePresenter();
+    protected LoginPresenter createPresenter() {
+        return new LoginPresenter();
     }
 
     @Override

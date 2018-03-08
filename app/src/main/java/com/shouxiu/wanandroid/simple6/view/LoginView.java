@@ -1,14 +1,17 @@
 package com.shouxiu.wanandroid.simple6.view;
 
 
+import com.shouxiu.wanandroid.network.bean.LoginBean;
 import com.shouxiu.wanandroid.simple6.base.BaseView;
 
 /**
- * @创建者 yeping
- * @创建时间 2017/9/5 10:27
- * @描述 ${TODO}
+ * @author yeping
+ * @date 2018/2/28 20:31
+ * @description ${TODO}
  */
 
 public interface LoginView extends BaseView {
-   void onLoginResult(String result);
+    void loginSuccess(LoginBean result);
+
+    void loginFail(String result);
 }
