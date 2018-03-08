@@ -70,7 +70,8 @@ public interface AppletConstant {
          */
         String PHONE_NUM = "^1\\d{10}$";
     }
-    public interface Weex {
+
+    interface Weex {
         String WEEX_TPL_KEY = "_wx_tpl";
         String WXPAGE = "wxpage";
         String WEEX_CATEGORY = "com.taobao.android.intent.category.WEEX";

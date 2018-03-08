@@ -219,10 +219,7 @@ public class UmsStringUtils {
      * @Description 判断字符串是否不为空
      */
     public static boolean isNotEmpty(String str) {
-        if (str == null || str.length() <= 0) {
-            return false;
-        }
-        return true;
+        return !(str == null || str.length() <= 0);
     }
 
     /**
@@ -231,10 +228,7 @@ public class UmsStringUtils {
      * @Description 判断字符串是否为空
      */
     public static boolean isEmpty(String str) {
-        if (str == null || str.length() <= 0) {
-            return true;
-        }
-        return false;
+        return str == null || str.length() <= 0;
     }
 
     /**
@@ -268,11 +262,8 @@ public class UmsStringUtils {
      * @return
      */
     public static boolean hasValue(String value) {
-        if (value != null && UmsStringUtils.isNotEmpty(value)
-                && UmsStringUtils.isNotBlank(value)) {
-            return true;
-        }
-        return false;
+        return value != null && UmsStringUtils.isNotEmpty(value)
+                && UmsStringUtils.isNotBlank(value);
     }
 
     /**

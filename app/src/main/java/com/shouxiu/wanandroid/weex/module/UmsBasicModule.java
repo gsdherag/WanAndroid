@@ -83,7 +83,7 @@ public class UmsBasicModule extends WXModule {
 
     private UmsGlobalEventModule getGlobalEventModule() throws Exception {
         Class<?> clazz = Class.forName("com.taobao.weex.bridge.WXModuleManager");
-        Method method = clazz.getDeclaredMethod("findModule", new Class[]{String.class, String.class, ModuleFactory.class});
+        Method method = clazz.getDeclaredMethod("findModule", String.class, String.class, ModuleFactory.class);
         method.setAccessible(true);
         UmsGlobalEventModule globalEventModule = (UmsGlobalEventModule) method.invoke(null, mWXSDKInstance.getInstanceId(), "ums_globalEvent", new TypeModuleFactory<>(UmsGlobalEventModule.class));
         globalEventModule.mWXSDKInstance = mWXSDKInstance;

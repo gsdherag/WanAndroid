@@ -98,8 +98,8 @@ public class TabBean implements Parcelable {
         if (fragment == null) {
             Constructor constructor;
             try {
-                constructor = fragmentClass.getConstructor(new Class[0]);
-                fragment = (Fragment) constructor.newInstance(new Object[0]);
+                constructor = fragmentClass.getConstructor();
+                fragment = (Fragment) constructor.newInstance();
             } catch (Exception e) {
                 e.printStackTrace();
             }

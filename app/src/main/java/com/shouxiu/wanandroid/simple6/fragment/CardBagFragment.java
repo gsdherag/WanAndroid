@@ -39,9 +39,9 @@ public class CardBagFragment extends BaseFragment<BaseView,BasePresenter<BaseVie
 
     @Override
     protected void initView(View view) {
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.alipay_rv);
-        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.alipay_srl);
-        mHeaderView = (APHeaderView) view.findViewById(R.id.alipay_header);
+        mRecyclerView = view.findViewById(R.id.alipay_rv);
+        mRefreshLayout = view.findViewById(R.id.alipay_srl);
+        mHeaderView = view.findViewById(R.id.alipay_header);
 
         final LinearLayoutManager lm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
 

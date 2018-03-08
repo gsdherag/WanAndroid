@@ -52,10 +52,7 @@ public class JsonUtils {
 
     public static boolean getBoolean(JSONObject root, String key) {
         String str = getString(root, key);
-        if (str.equals("true"))
-            return true;
-        else
-            return false;
+        return str.equals("true");
     }
 
     public static JSONObject getJsonObject(String jsonStr) {

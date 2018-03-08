@@ -44,8 +44,8 @@ public class GuideAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View view = View.inflate(context, R.layout.item_guide, null);
-        ImageView iv_guide = (ImageView) view.findViewById(R.id.iv_guide);
-        Button btn_guide = (Button) view.findViewById(R.id.btn_guide);
+        ImageView iv_guide = view.findViewById(R.id.iv_guide);
+        Button btn_guide = view.findViewById(R.id.btn_guide);
         if (position == 3)
             btn_guide.setVisibility(View.VISIBLE);
         btn_guide.setOnClickListener(new View.OnClickListener() {

@@ -6,19 +6,29 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.shouxiu.wanandroid.R;
+import com.shouxiu.wanandroid.bean.LoginEvent;
+import com.shouxiu.wanandroid.manager.SessionManager;
+import com.shouxiu.wanandroid.network.ApiService;
 import com.shouxiu.wanandroid.network.bean.ArticleBean;
+import com.shouxiu.wanandroid.network.bean.CollectBean;
 import com.shouxiu.wanandroid.network.bean.HomeArticleBean;
+import com.shouxiu.wanandroid.network.bean.LzyResponse;
 import com.shouxiu.wanandroid.simple6.adapter.ArticleAdapter;
 import com.shouxiu.wanandroid.simple6.base.BaseFragment;
 import com.shouxiu.wanandroid.simple6.presenter.HomeArticlePresenter;
 import com.shouxiu.wanandroid.simple6.view.HomeArticleView;
+import com.shouxiu.wanandroid.utils.RxBus;
+import com.shouxiu.wanandroid.utils.ToastUtil;
 import com.shouxiu.wanandroid.view.recyclerview.BaseQuickAdapter;
+import com.shouxiu.wanandroid.view.webview.WebViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +37,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @创建者 yeping
@@ -34,7 +47,9 @@ import butterknife.Unbinder;
  * @描述 ${加载首页文章}
  */
 
-public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticlePresenter> implements HomeArticleView, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticlePresenter>
+        implements HomeArticleView, BaseQuickAdapter.RequestLoadMoreListener,
+        SwipeRefreshLayout.OnRefreshListener, ArticleAdapter.OnItemClickListener {
 
     @BindView(R.id.rv_home_new_article)
     RecyclerView rvHomeNewArticle;
@@ -59,15 +74,11 @@ public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticleP
         rvHomeNewArticle.setAdapter(mArticleAdapter);
         splHomeNewArticle.setOnRefreshListener(this);
         mArticleAdapter.setOnLoadMoreListener(this);
-        mArticleAdapter.setOnItemClickListener(new ArticleAdapter.OnItemClickListener() {
+        mArticleAdapter.setOnItemClickListener(this);
+        RxBus.getInstance().toFlowablle(LoginEvent.class).subscribe(new Consumer<LoginEvent>() {
             @Override
-            public void onItemClick(View view, int position) {
-
-            }
-
-            @Override
-            public void onItemLikeClick(View view, int position, boolean isCollect) {
-
+            public void accept(LoginEvent loginEvent) throws Exception {
+                getPresenter().loadArticle(page);
             }
         });
     }
@@ -142,5 +153,44 @@ public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticleP
     @OnClick(R.id.fab_top)
     public void onViewClicked() {
         rvHomeNewArticle.smoothScrollToPosition(0);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        WebViewActivity.loadUrl(getContext(), searchList.get(position).getLink(), Html.fromHtml(searchList.get(position).getTitle()).toString());
+
+    }
+
+    @Override
+    public void onItemLikeClick(View view, final int position, final boolean isCollect) {
+        if (!SessionManager.getInstance().isLogin()) {
+            ARouter.getInstance().build("/test/login").navigation();
+            return;
+        }
+        if (isCollect) {
+            ApiService.createSearchService().uncollectLink(searchList.get(position).getId())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<LzyResponse>() {
+                        @Override
+                        public void accept(LzyResponse lzyResponse) throws Exception {
+                            searchList.get(position).setCollect(!isCollect);
+                            mArticleAdapter.notifyItemChanged(position);
+                            ToastUtil.showToast("取消收藏成功");
+                        }
+                    });
+        } else {
+            ApiService.createSearchService().collectLink(searchList.get(position).getId())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<LzyResponse<CollectBean>>() {
+                        @Override
+                        public void accept(LzyResponse<CollectBean> collectBeanLzyResponse) throws Exception {
+                            searchList.get(position).setCollect(!isCollect);
+                            mArticleAdapter.notifyItemChanged(position);
+                            ToastUtil.showToast("收藏成功");
+                        }
+                    });
+        }
     }
 }

@@ -63,10 +63,7 @@ public class Utils {
                 return false;
             }
             File file = new File(path);
-            if (!file.exists() || !file.isFile()) {
-                return false;
-            }
-            return true;
+            return !(!file.exists() || !file.isFile());
         }
 
         /**

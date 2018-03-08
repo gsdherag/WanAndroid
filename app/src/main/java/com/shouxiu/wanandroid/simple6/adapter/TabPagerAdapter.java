@@ -59,9 +59,9 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
 
     public View getTabView(int position){
         View view = LayoutInflater.from(context).inflate(R.layout.tab_item, null);
-        TextView tv= (TextView) view.findViewById(R.id.txt_title);
+        TextView tv = view.findViewById(R.id.txt_title);
         tv.setText(list_Title[position]);
-        ImageView img = (ImageView) view.findViewById(R.id.img_title);
+        ImageView img = view.findViewById(R.id.img_title);
         img.setImageResource(image_Array[position]);
         return view;
     }

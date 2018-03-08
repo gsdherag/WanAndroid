@@ -74,12 +74,12 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
 
     private void initTitle() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.blue_app), 0);
-        mProgressBar = (ProgressBar) findViewById(R.id.pb_progress);
-        webView = (WebView) findViewById(R.id.webview_detail);
-        videoFullView = (FrameLayout) findViewById(R.id.video_fullView);
-        mTitleToolBar = (Toolbar) findViewById(R.id.title_tool_bar);
-        mTsTitle = (TextSwitcher) findViewById(R.id.ts_title);
-        tvGunTitle = (TextView) findViewById(R.id.tv_gun_title);
+        mProgressBar = findViewById(R.id.pb_progress);
+        webView = findViewById(R.id.webview_detail);
+        videoFullView = findViewById(R.id.video_fullView);
+        mTitleToolBar = findViewById(R.id.title_tool_bar);
+        mTsTitle = findViewById(R.id.ts_title);
+        tvGunTitle = findViewById(R.id.tv_gun_title);
 
         initToolBar();
     }

@@ -41,7 +41,7 @@ public class StatusBarUtils {
         //设置Window为透明
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-        ViewGroup mContentView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
+        ViewGroup mContentView = activity.findViewById(Window.ID_ANDROID_CONTENT);
         View mContentChild = mContentView.getChildAt(0);
 
         //移除已经存在假状态栏则,并且取消它的Margin间距
@@ -72,7 +72,7 @@ public class StatusBarUtils {
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
         }
         //view不根据系统窗口来调整自己的布局
-        ViewGroup mContentView = (ViewGroup) window.findViewById(Window.ID_ANDROID_CONTENT);
+        ViewGroup mContentView = window.findViewById(Window.ID_ANDROID_CONTENT);
         View mChildView = mContentView.getChildAt(0);
         if (mChildView != null) {
             ViewCompat.setFitsSystemWindows(mChildView, false);
@@ -233,7 +233,7 @@ public class StatusBarUtils {
                 activity.getWindow().setStatusBarColor(color);
 
                 //fitsSystemWindow 为 false, 不预留系统栏位置.
-                ViewGroup mContentView = (ViewGroup) activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT);
+                ViewGroup mContentView = activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT);
                 View mChildView = mContentView.getChildAt(0);
                 if (mChildView != null) {
                     ViewCompat.setFitsSystemWindows(mChildView, true);

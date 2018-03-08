@@ -30,8 +30,8 @@ public class PlayDebugAdapter implements IWXDebugAdapter {
             public void run() {
                 try {
                     Class cls = Class.forName("com.taobao.weex.WXPrettyFish");
-                    Method m = cls.getMethod("init", new Class[]{Application.class});
-                    m.invoke(cls, new Object[]{application});
+                    Method m = cls.getMethod("init", Application.class);
+                    m.invoke(cls, application);
                 } catch (Exception e) {
                     WXLogUtils.d("weex", "WXPrettyFish not found!");
                 }
@@ -44,13 +44,13 @@ public class PlayDebugAdapter implements IWXDebugAdapter {
     public View wrapContainer(WXSDKInstance instance, View wxView) {
         try {
             Class scalpelClas = Class.forName("com.taobao.weex.scalpel.ScalpelFrameLayout");
-            Constructor constructor = scalpelClas.getConstructor(new Class[]{Context.class});
+            Constructor constructor = scalpelClas.getConstructor(Context.class);
             ViewGroup container = (ViewGroup) constructor.newInstance(wxView.getContext());
             if (container != null) {
                 container.addView(wxView);
                 Class cls = Class.forName("com.taobao.weex.WXDebugTool");
-                Method m = cls.getMethod("updateScapleView", new Class[]{Object.class});
-                m.invoke(null, new Object[]{container});
+                Method m = cls.getMethod("updateScapleView", Object.class);
+                m.invoke(null, container);
                 instance.registerActivityStateListener(new DebugActivityState(wxView));
                 return container;
             }
@@ -97,8 +97,8 @@ public class PlayDebugAdapter implements IWXDebugAdapter {
         public void onActivityPause() {
             try {
                 Class cls = Class.forName("com.taobao.weex.WXDebugTool");
-                Method m = cls.getMethod("updateScapleView", new Class[]{Object.class});
-                m.invoke(null, new Object[]{});
+                Method m = cls.getMethod("updateScapleView", Object.class);
+                m.invoke(null);
             } catch (Exception e) {
             }
         }
@@ -108,8 +108,8 @@ public class PlayDebugAdapter implements IWXDebugAdapter {
             if (mWXView != null && mWXView.getParent() != null && mWXView.getParent().getClass().getName().equals("com.taobao.weex.scalpel.ScalpelFrameLayout")) {
                 try {
                     Class cls = Class.forName("com.taobao.weex.WXDebugTool");
-                    Method m = cls.getMethod("updateScapleView", new Class[]{Object.class});
-                    m.invoke(null, new Object[]{mWXView.getParent()});
+                    Method m = cls.getMethod("updateScapleView", Object.class);
+                    m.invoke(null, mWXView.getParent());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

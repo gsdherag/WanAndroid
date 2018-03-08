@@ -4,8 +4,8 @@ import android.content.Context;
 
 public interface IOpenManager {
 
-    public void init(Context context);
+    void init(Context context);
 
-    public void destroy();
+    void destroy();
     
 }
