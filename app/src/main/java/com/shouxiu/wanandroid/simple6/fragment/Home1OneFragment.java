@@ -38,7 +38,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -75,7 +74,7 @@ public class Home1OneFragment extends BaseFragment<HomeArticleView, HomeArticleP
         splHomeNewArticle.setOnRefreshListener(this);
         mArticleAdapter.setOnLoadMoreListener(this);
         mArticleAdapter.setOnItemClickListener(this);
-        Disposable subscribe = RxBus.getInstance().toFlowablle(LoginEvent.class).subscribe(new Consumer<LoginEvent>() {
+        RxBus.getInstance().toFlowablle(LoginEvent.class).subscribe(new Consumer<LoginEvent>() {
             @Override
             public void accept(LoginEvent loginEvent) throws Exception {
                 getPresenter().loadArticle(page);

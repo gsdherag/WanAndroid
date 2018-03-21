@@ -66,4 +66,6 @@ dependencies {
     //内存泄漏
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    //动态权限申请
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }

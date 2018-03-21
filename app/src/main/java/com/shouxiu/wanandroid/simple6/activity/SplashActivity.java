@@ -73,6 +73,7 @@ public class SplashActivity extends BaseActivity<BaseView, BasePresenter<BaseVie
         super.onDestroy();
         if (mSubscribe != null && !mSubscribe.isDisposed()) {
             mSubscribe.dispose();
+            mSubscribe = null;
         }
     }
 }

@@ -105,6 +105,7 @@ public class HomeFragment1 extends BaseFragment<BaseView, BasePresenter<BaseView
                                 .setImages(images)
                                 .setBannerAnimation(Transformer.Default)
                                 .setBannerTitles(titles)
+                                .setOffscreenPageLimit(2)
                                 .isAutoPlay(true)
                                 .setDelayTime(5000)
                                 .start();
@@ -127,6 +128,14 @@ public class HomeFragment1 extends BaseFragment<BaseView, BasePresenter<BaseView
     public void onStop() {
         super.onStop();
         banner.stopAutoPlay();
+    }
+
+    @Override
+    protected void onInvisible() {
+        super.onInvisible();
+        if (banner != null) {
+            banner.stopAutoPlay();
+        }
     }
 
     @Override
@@ -155,6 +164,7 @@ public class HomeFragment1 extends BaseFragment<BaseView, BasePresenter<BaseView
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        banner.releaseBanner();
         unbinder.unbind();
     }
 }

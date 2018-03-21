@@ -1,5 +1,6 @@
 package com.shouxiu.wanandroid.simple6.fragment;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.shouxiu.wanandroid.R;
@@ -20,6 +22,7 @@ import com.shouxiu.wanandroid.simple6.adapter.MyFragmentPagerAdapter;
 import com.shouxiu.wanandroid.simple6.base.BaseFragment;
 import com.shouxiu.wanandroid.simple6.base.BasePresenter;
 import com.shouxiu.wanandroid.simple6.base.BaseView;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.functions.Consumer;
 
 /**
  * @创建者 yeping
@@ -65,6 +69,7 @@ public class HomePageFragment extends BaseFragment<BaseView, BasePresenter<BaseV
     protected void initView(View view) {
         View navHeadView = navView.inflateHeaderView(R.layout.nav_header_main);
         navHeadView.findViewById(R.id.ll_nav_music_Clock).setOnClickListener(this);
+        navHeadView.findViewById(R.id.ll_nav_deedback).setOnClickListener(this);
         ViewGroup.LayoutParams layoutParams = viewStatus.getLayoutParams();
         layoutParams.height = getStatusHeight();
         viewStatus.setLayoutParams(layoutParams);
@@ -182,6 +187,23 @@ public class HomePageFragment extends BaseFragment<BaseView, BasePresenter<BaseV
         switch (v.getId()) {
             case R.id.ll_nav_music_Clock:
                 startActivity(new Intent(getContext(), AlarmClockActivity.class));
+                break;
+            case R.id.ll_nav_deedback:
+                RxPermissions rxPermissions = new RxPermissions(getActivity());
+                rxPermissions.request(Manifest.permission.CAMERA,
+                        Manifest.permission.READ_PHONE_STATE,
+                        Manifest.permission.INTERNET)
+                        .subscribe(new Consumer<Boolean>() {
+                            @Override
+                            public void accept(Boolean aBoolean) throws Exception {
+                                if (aBoolean) { // 在android 6.0之前会默认返回true
+
+                                } else {
+                                    // 未获取权限
+                                    Toast.makeText(getActivity(), "您没有授权该权限，请在设置中打开授权", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                 break;
         }
     }
