@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".simple6.activity.SplashActivity"
             android:screenOrientation="portrait">
@@ -25,32 +24,39 @@
             </intent-filter>
         </activity>
 
-        <!--主页-->
+        <!-- 主页 -->
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
-        <!--指导页-->
+        <!-- 指导页 -->
         <activity
             android:name=".simple6.activity.GuideActivity"
             android:screenOrientation="portrait"/>
 
-        <!--网页页-->
+        <!-- 网页页 -->
         <activity
             android:name=".view.webview.WebViewActivity"
             android:screenOrientation="portrait"/>
 
-        <!--搜索页-->
+        <!-- 搜索页 -->
         <activity
             android:name=".simple6.activity.SearchActivity"
             android:screenOrientation="portrait"/>
 
-        <!--登录-->
+        <!-- 登录 -->
         <activity
             android:name=".simple6.activity.LoginActivity"
             android:screenOrientation="portrait"/>
+
+        <!-- 博客二级分类 -->
+        <activity
+            android:name=".simple6.activity.ArticleTypeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".simple6.activity.AlarmClockActivity">
+        </activity>
     </application>
 
 </manifest>

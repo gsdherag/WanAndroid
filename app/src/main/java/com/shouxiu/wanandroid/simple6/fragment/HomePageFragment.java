@@ -1,5 +1,6 @@
 package com.shouxiu.wanandroid.simple6.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.shouxiu.wanandroid.R;
+import com.shouxiu.wanandroid.simple6.activity.AlarmClockActivity;
 import com.shouxiu.wanandroid.simple6.adapter.MyFragmentPagerAdapter;
 import com.shouxiu.wanandroid.simple6.base.BaseFragment;
 import com.shouxiu.wanandroid.simple6.base.BasePresenter;
@@ -32,7 +34,7 @@ import butterknife.Unbinder;
  * @描述 ${TODO}
  */
 
-public class HomePageFragment extends BaseFragment<BaseView, BasePresenter<BaseView>> implements BaseView, ViewPager.OnPageChangeListener {
+public class HomePageFragment extends BaseFragment<BaseView, BasePresenter<BaseView>> implements BaseView, ViewPager.OnPageChangeListener, View.OnClickListener {
 
     @BindView(R.id.nav_view)
     NavigationView navView;
@@ -61,7 +63,8 @@ public class HomePageFragment extends BaseFragment<BaseView, BasePresenter<BaseV
 
     @Override
     protected void initView(View view) {
-        navView.inflateHeaderView(R.layout.nav_header_main);
+        View navHeadView = navView.inflateHeaderView(R.layout.nav_header_main);
+        navHeadView.findViewById(R.id.ll_nav_music_Clock).setOnClickListener(this);
         ViewGroup.LayoutParams layoutParams = viewStatus.getLayoutParams();
         layoutParams.height = getStatusHeight();
         viewStatus.setLayoutParams(layoutParams);
@@ -120,7 +123,7 @@ public class HomePageFragment extends BaseFragment<BaseView, BasePresenter<BaseV
                 }
                 break;
             case R.id.ll_title_search:
-                ARouter.getInstance().build("/test/1").navigation(getContext());
+                ARouter.getInstance().build("/activity/SearchActivity").navigation(getContext());
                 break;
             default:
                 break;
@@ -172,5 +175,14 @@ public class HomePageFragment extends BaseFragment<BaseView, BasePresenter<BaseV
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ll_nav_music_Clock:
+                startActivity(new Intent(getContext(), AlarmClockActivity.class));
+                break;
+        }
     }
 }

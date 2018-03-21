@@ -44,7 +44,7 @@ import io.reactivex.schedulers.Schedulers;
  * @date 2018/3/5 10:14
  * @description ${TODO}
  */
-@Route(path = "/test/1")
+@Route(path = "/activity/SearchActivity")
 public class SearchActivity extends BaseActivity<BaseView, BasePresenter<BaseView>> implements BaseView {
 
     @BindView(R.id.toolbar)

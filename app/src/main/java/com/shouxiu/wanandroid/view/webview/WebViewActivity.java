@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -24,6 +23,7 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.shouxiu.wanandroid.R;
+import com.shouxiu.wanandroid.simple6.base.BasicActivity;
 import com.shouxiu.wanandroid.utils.BaseTools;
 import com.shouxiu.wanandroid.utils.NetWorkUtil;
 import com.shouxiu.wanandroid.utils.ShareUtils;
@@ -43,7 +43,7 @@ import com.shouxiu.wanandroid.view.webview.config.MyWebViewClient;
  * Thanks to: https://github.com/youlookwhat/WebViewStudy
  * contact me: http://www.jianshu.com/users/e43c6e979831/latest_articles
  */
-public class WebViewActivity extends AppCompatActivity implements IWebPageView {
+public class WebViewActivity extends BasicActivity implements IWebPageView {
 
     // 进度条
     private ProgressBar mProgressBar;

@@ -129,7 +129,6 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter<V
         if (mUnbinder != null) {
             mUnbinder.unbind();
         }
-
     }
 
     public int getStatusHeight() {
@@ -161,7 +160,7 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter<V
     public void hiddenInput() {
         try {
             ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
-                    .hideSoftInputFromWindow(this.getCurrentFocus()
+                    .hideSoftInputFromWindow(BaseActivity.this.getCurrentFocus()
                                     .getWindowToken(),
                             0);
         } catch (Exception e) {

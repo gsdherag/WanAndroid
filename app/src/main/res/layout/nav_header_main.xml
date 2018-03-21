@@ -154,7 +154,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_nav_about"
+                android:id="@+id/ll_nav_music_Clock"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/ripple_one_item_bg"
@@ -173,7 +173,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:text="关于云阅"
+                    android:text="音乐闹钟"
                     android:textColor="@color/colorContent"
                     android:textSize="15sp"/>
 

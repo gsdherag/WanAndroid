@@ -13,6 +13,8 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="black_4c5858">#4C5858</color>
+    <!--tab标签栏文字的颜色-->
+    <color name="colorTabText">#585858</color>
     <color name="transparent">#00000000</color>
 
     <!-- 页面背景色 -->

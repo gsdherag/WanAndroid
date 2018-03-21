@@ -21,4 +21,15 @@ public class Constant {
      * 是否登录
      */
     public static final String KEY_LOGIN_STATE = "key_login_state";
+
+    public static final String CONTENT_CID_KEY = "cid";
+
+    /**
+     * title key
+     */
+    public static final String CONTENT_TITLE_KEY = "title";
+    /**
+     * childrenData key
+     */
+    public static final String CONTENT_CHILDREN_DATA_KEY = "childrenData";
 }
